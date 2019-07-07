@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2507fa642e52a4c2db1a79faf672d617, type: 3}
+  m_Name: EnumGenerator
+  m_EditorClassIdentifier: 
+  enums:
+  - jsonFile: {fileID: 4900000, guid: a81ff22a86b264a2a8b3f1d35ae3f12c, type: 3}
+    collectionJPath: '[*]'
+    entryNameJPath: name
+    entryValueJPath: id
+    entryCommentJPath: 
+    enumNamespace: 
+    enumComment: 
+    indentMode: 0
+    indentSize: 4
+    newlineMode: 0
+    storageType: 0
+    curlyBracketMode: 0
+    autoGenerate: 1
+    outputPath: Scripts/Units.g.cs
+    verboseLogging: 0

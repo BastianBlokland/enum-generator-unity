@@ -1,0 +1,122 @@
+[
+  {
+    "id": 10,
+    "name": "Hestharg The Epic",
+    "attack": 45,
+    "health": 46
+  },
+  {
+    "id": 20,
+    "name": "Halran The Sweet",
+    "attack": 234,
+    "health": 45
+  },
+  {
+    "id": 30,
+    "name": "Newaru The Cool",
+    "attack": 56,
+    "health": 23
+  },
+  {
+    "id": 40,
+    "name": "Fledthe The Dude",
+    "attack": 16,
+    "health": 47
+  },
+  {
+    "id": 50,
+    "name": "Ristan The Stuff",
+    "attack": 13,
+    "health": 567
+  },
+  {
+    "id": 60,
+    "name": "Nkele The Warrior",
+    "attack": 45,
+    "health": 24
+  },
+  {
+    "id": 70,
+    "name": "Raktrarg The Mage",
+    "attack": 768,
+    "health": 67
+  },
+  {
+    "id": 80,
+    "name": "Hukrolm The Elf",
+    "attack": 34,
+    "health": 56
+  },
+  {
+    "id": 90,
+    "name": "Connchop The Ork",
+    "attack": 67,
+    "health": 89
+  },
+  {
+    "id": 100,
+    "name": "Ordhes The Wizard",
+    "attack": 23,
+    "health": 56
+  },
+  {
+    "id": 110,
+    "name": "Odrud The Handmaiden",
+    "attack": 67,
+    "health": 98
+  },
+  {
+    "id": 120,
+    "name": "Neea The Magnificent",
+    "attack": 34,
+    "health": 67
+  },
+  {
+    "id": 130,
+    "name": "Cuthod The Epic",
+    "attack": 78,
+    "health": 45
+  },
+  {
+    "id": 140,
+    "name": "Chopneon The Rock",
+    "attack": 23,
+    "health": 78
+  },
+  {
+    "id": 150,
+    "name": "Tycrom The UberLord",
+    "attack": 443,
+    "health": 12
+  },
+  {
+    "id": 160,
+    "name": "Kahvortheon The Thinker",
+    "attack": 989,
+    "health": 89
+  },
+  {
+    "id": 170,
+    "name": "Leofun The Dwarf",
+    "attack": 23,
+    "health": 38
+  },
+  {
+    "id": 180,
+    "name": "Hildahilda The Fool",
+    "attack": 60,
+    "health": 37
+  },
+  {
+    "id": 190,
+    "name": "Cynran The Brains",
+    "attack": 60,
+    "health": 15
+  },
+  {
+    "id": 200,
+    "name": "Thebeorth The Mechanic",
+    "attack": 36,
+    "health": 58
+  }
+]
