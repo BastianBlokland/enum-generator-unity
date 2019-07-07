@@ -1,0 +1,14 @@
+{
+  "name": "com.enumgenerator",
+  "displayName": "Enum Generator",
+  "author": "Bastian Blokland",
+  "version": "1.0.0",
+  "unity": "2018.4",
+  "description": "Tool for generating c# enums based on json input files. Repository: https://github.com/bastianblokland/enum-generator-unity",
+  "keywords": [
+    "enum",
+    "enum-generator",
+    "enumgenerator"
+  ],
+  "category": "Unity"
+}
