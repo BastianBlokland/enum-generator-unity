@@ -1,0 +1,18 @@
+# --------------------------------------------------------------------------------------------------
+# Files to ignore in git.
+# --------------------------------------------------------------------------------------------------
+
+# NuGet cache
+.nuget/
+
+# Temp output
+.bin/
+.obj/
+
+# Example
+.example/Library/
+.example/Logs/
+.example/Temp/
+.example/obj/
+.example/*.csproj
+.example/*.sln
