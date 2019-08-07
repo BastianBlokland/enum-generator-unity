@@ -5,14 +5,28 @@ set -e
 # Miscellaneous reusable utilities that can be used by other bash scripts.
 # --------------------------------------------------------------------------------------------------
 
-info ()
+info()
 {
-    echo "INFO: $1"
+    if [ -z "$NO_COLORS" ]
+    then
+        GREEN='\033[0;32m'
+        NORMAL='\033[0m'
+        echo -e "${GREEN}INFO: ${1}${NORMAL}"
+    else
+        echo "INFO: $1"
+    fi
 }
 
-warn ()
+warn()
 {
-    echo "WARN: $1"
+    if [ -z "$NO_COLORS" ]
+    then
+        YELLOW='\033[0;33m'
+        NORMAL='\033[0m'
+        echo -e "${YELLOW}WARN: ${1}${NORMAL}"
+    else
+        echo "WARN: $1"
+    fi
 }
 
 fail ()
