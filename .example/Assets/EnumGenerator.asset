@@ -28,4 +28,5 @@ MonoBehaviour:
     curlyBracketMode: 0
     autoGenerate: 1
     outputPath: Scripts/Units.g.cs
+    outputType: 0
     verboseLogging: 0
