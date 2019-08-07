@@ -61,6 +61,9 @@ namespace EnumGenerator.Editor
         [Tooltip("Path to save the enum to relative to the Assets directory")]
         [SerializeField] private string outputPath = "Scripts/NewEnum.g.cs";
 
+        [Tooltip("Type of output to produce")]
+        [SerializeField] private OutputType outputType = OutputType.CSharp;
+
         [Header("Diagnostics")]
         [Tooltip("Should verbose diagnostic logging be enabled")]
         [SerializeField] private bool verboseLogging;
@@ -148,6 +151,11 @@ namespace EnumGenerator.Editor
         /// Path to save the enum to relative to the Assets directory.
         /// </summary>
         public string OutputPath => this.outputPath;
+
+        /// <summary>
+        /// Type of output to produce.
+        /// </summary>
+        public OutputType OutputType => this.outputType;
 
         /// <summary>
         /// Should verbose diagnostic logging be enabled during the mapping.
