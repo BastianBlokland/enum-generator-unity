@@ -36,6 +36,9 @@ namespace EnumGenerator.Editor
         [Tooltip("(Optional) Comment to add to the generated enum")]
         [SerializeField] private string enumComment = "";
 
+        [Tooltip("Mode to use when adding a header to the generated enum")]
+        [SerializeField] private Core.Exporter.HeaderMode headerMode = Core.Exporter.HeaderMode.Default;
+
         [Tooltip("Indentation mode to use for the generated enum")]
         [SerializeField] private CodeBuilder.IndentMode indentMode = CodeBuilder.IndentMode.Spaces;
 
@@ -105,6 +108,11 @@ namespace EnumGenerator.Editor
         /// (Optional) Comment to add to the generated enum.
         /// </summary>
         public string EnumComment => this.enumComment;
+
+        /// <summary>
+        /// Mode to use when adding a header to the generated enum.
+        /// </summary>
+        public Core.Exporter.HeaderMode HeaderMode => this.headerMode;
 
         /// <summary>
         /// Indentation mode to use for the generated enum.

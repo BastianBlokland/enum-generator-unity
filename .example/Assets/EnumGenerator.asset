@@ -20,6 +20,7 @@ MonoBehaviour:
     entryCommentJPath: 
     enumNamespace: 
     enumComment: 
+    headerMode: 0
     indentMode: 0
     indentSize: 4
     newlineMode: 0
