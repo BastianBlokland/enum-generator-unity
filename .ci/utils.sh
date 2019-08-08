@@ -29,9 +29,16 @@ warn()
     fi
 }
 
-fail ()
+fail()
 {
-    echo $1 >&2
+    if [ -z "$NO_COLORS" ]
+    then
+        RED='\033[0;31m'
+        NORMAL='\033[0m'
+        echo -e "${RED}ERROR: ${1}${NORMAL}" >&2
+    else
+        echo -e "ERROR: $1" >&2
+    fi
     exit 1
 }
 

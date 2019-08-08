@@ -1,4 +1,4 @@
-EnumGenerator.Core.3.2.1196
+EnumGenerator.Core.3.3.1203
 Microsoft.Extensions.Configuration.2.2.0
 Microsoft.Extensions.Configuration.Abstractions.2.2.0
 Microsoft.Extensions.Configuration.Binder.2.2.0
@@ -7,6 +7,7 @@ Microsoft.Extensions.Logging.2.2.0
 Microsoft.Extensions.Logging.Abstractions.2.2.0
 Microsoft.Extensions.Options.2.2.0
 Microsoft.Extensions.Primitives.2.2.0
+Mono.Cecil.0.10.4
 Newtonsoft.Json.12.0.1
 System.Buffers.4.4.0
 System.Collections.Immutable.1.5.0

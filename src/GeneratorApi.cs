@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using Microsoft.Extensions.Logging;
 
 using EnumGenerator.Core.Utilities;
@@ -15,6 +16,8 @@ namespace EnumGenerator.Editor
     /// </summary>
     public static class GeneratorApi
     {
+        private static readonly Encoding Utf8NoBom = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+
         /// <summary>
         /// Generate enum file.
         /// </summary>
@@ -129,21 +132,21 @@ namespace EnumGenerator.Editor
                 return;
             }
 
-            // Export to source-code.
-            string output = null;
+            // Export.
+            byte[] output = null;
             switch (outputType)
             {
                 case OutputType.CSharp:
                     try
                     {
-                        output = enumDefinition.ExportCSharp(
+                        output = Utf8NoBom.GetBytes(enumDefinition.ExportCSharp(
                             enumNamespace,
                             headerMode,
                             indentMode,
                             indentSize,
                             newlineMode,
                             storageType,
-                            curlyBracketMode);
+                            curlyBracketMode));
                     }
                     catch (Exception e)
                     {
@@ -156,7 +159,7 @@ namespace EnumGenerator.Editor
                 case OutputType.Cil:
                     try
                     {
-                        output = enumDefinition.ExportCil(
+                        output = Utf8NoBom.GetBytes(enumDefinition.ExportCil(
                             assemblyName: enumName,
                             enumNamespace,
                             headerMode,
@@ -164,11 +167,27 @@ namespace EnumGenerator.Editor
                             indentSize,
                             newlineMode,
                             storageType,
-                            curlyBracketMode);
+                            curlyBracketMode));
                     }
                     catch (Exception e)
                     {
                         logger?.LogCritical($"Failed to generate cil: {e.Message}");
+                        return;
+                    }
+
+                    break;
+
+                case OutputType.ClassLibrary:
+                    try
+                    {
+                        output = enumDefinition.ExportClassLibrary(
+                            assemblyName: enumName,
+                            enumNamespace,
+                            storageType);
+                    }
+                    catch (Exception e)
+                    {
+                        logger?.LogCritical($"Failed to generate classlibrary: {e.Message}");
                         return;
                     }
 
@@ -189,8 +208,8 @@ namespace EnumGenerator.Editor
                     Directory.CreateDirectory(outputDir);
                 }
 
-                File.WriteAllText(fullPath, output);
-                logger?.LogInformation($"Saved enum: '{outputPath}'");
+                File.WriteAllBytes(fullPath, output);
+                logger?.LogInformation($"Saved enum: '{fullPath}'");
             }
             catch (Exception e)
             {
@@ -231,6 +250,8 @@ namespace EnumGenerator.Editor
                     return ".cs";
                 case OutputType.Cil:
                     return ".il";
+                case OutputType.ClassLibrary:
+                    return ".dll";
                 default:
                     throw new InvalidOperationException($"Unknown output: '{outputType}'.");
             }
@@ -244,6 +265,8 @@ namespace EnumGenerator.Editor
                     return ".g.cs";
                 case OutputType.Cil:
                     return ".g.il";
+                case OutputType.ClassLibrary:
+                    return ".dll";
                 default:
                     throw new InvalidOperationException($"Unknown output: '{outputType}'.");
             }

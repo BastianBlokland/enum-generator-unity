@@ -37,22 +37,27 @@ saveDll ()
 processPackage ()
 {
     local packageName="$(basename $1)"
+    local supportedFrameworks=(netstandard2.0 netstandard1.3)
     info "Processing package: $packageName"
 
-    local netstandard2Dir="$1/lib/netstandard2.0/"
-    if [ ! -d "$netstandard2Dir" ]
-    then
-        fail "No 'netstandard2.0' library found for package: $packageName"
-    fi
-
-    echo "$packageName" >> "$LIBRARY_DIR/manifest.txt"
-    for dllPath in "$netstandard2Dir"*.dll
+    for framework in "${supportedFrameworks[@]}"
     do
-        saveDll "$dllPath" "$packageName"
+        local frameworkDir="$1/lib/$framework/"
+        if [ -d "$frameworkDir" ]
+        then
+            echo "$packageName" >> "$LIBRARY_DIR/manifest.txt"
+            for dllPath in "$frameworkDir"*.dll
+            do
+                saveDll "$dllPath" "$packageName"
+            done
+            return 0;
+        fi
     done
+
+    fail "No supported framework found for package: $packageName"
 }
 
-# Extract all netstandard2.0 dll's from the packages.
+# Extract the needed dll's from the packages.
 for packageDir in "$NUGET_DIR"/*
 do
     processPackage $packageDir
