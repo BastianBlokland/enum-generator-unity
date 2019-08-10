@@ -156,6 +156,43 @@ namespace EnumGenerator.Editor
 
                     break;
 
+                case OutputType.FSharp:
+                    try
+                    {
+                        output = Utf8NoBom.GetBytes(enumDefinition.ExportFSharp(
+                            string.IsNullOrEmpty(enumNamespace) ? "Generated" : enumNamespace,
+                            headerMode,
+                            indentSize,
+                            newlineMode,
+                            storageType));
+                    }
+                    catch (Exception e)
+                    {
+                        logger?.LogCritical($"Failed to generate fsharp: {e.Message}");
+                        return;
+                    }
+
+                    break;
+
+                case OutputType.VisualBasic:
+                    try
+                    {
+                        output = Utf8NoBom.GetBytes(enumDefinition.ExportVisualBasic(
+                            enumNamespace,
+                            headerMode,
+                            indentMode,
+                            indentSize,
+                            newlineMode,
+                            storageType));
+                    }
+                    catch (Exception e)
+                    {
+                        logger?.LogCritical($"Failed to generate visual-basic: {e.Message}");
+                        return;
+                    }
+
+                    break;
+
                 case OutputType.Cil:
                     try
                     {
@@ -248,6 +285,10 @@ namespace EnumGenerator.Editor
             {
                 case OutputType.CSharp:
                     return ".cs";
+                case OutputType.FSharp:
+                    return ".fs";
+                case OutputType.VisualBasic:
+                    return ".vb";
                 case OutputType.Cil:
                     return ".il";
                 case OutputType.ClassLibrary:
@@ -263,6 +304,10 @@ namespace EnumGenerator.Editor
             {
                 case OutputType.CSharp:
                     return ".g.cs";
+                case OutputType.FSharp:
+                    return ".g.fs";
+                case OutputType.VisualBasic:
+                    return ".g.vb";
                 case OutputType.Cil:
                     return ".g.il";
                 case OutputType.ClassLibrary:
