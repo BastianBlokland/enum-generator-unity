@@ -1,6 +1,6 @@
 # EnumGenerator-Unity
 
-Unity package tool for generating c# enums based on json input files.
+Unity package tool for generating c# / f# / vb / cil enums based on json input files.
 
 ## Description
 If you have config in json files it can be nice to have a enum to reference in the code instead of
@@ -11,13 +11,13 @@ having to hard code values, this tool allows you to generate that enum.
 
     ```
     "dependencies": {
-        "com.bastianblokland.enumgenerator": "https://github.com/BastianBlokland/enum-generator-unity.git#v1.3",
+        "com.bastianblokland.enumgenerator": "https://github.com/BastianBlokland/enum-generator-unity.git#v1.4",
         ...
     }
     ```
 2. Add the NuGet dependency to your project.
 
-    If your project uses a NuGet package manager you can simply add a dependency to [**EnumGenerator.Core**](https://www.nuget.org/packages/EnumGenerator.Core/) version `3.3.*`.
+    If your project uses a NuGet package manager you can simply add a dependency to [**EnumGenerator.Core**](https://www.nuget.org/packages/EnumGenerator.Core/) version `3.5.*`.
 
     If you are not using a NuGet package manager you can simply copy the dll's from the [`.lib`](https://github.com/BastianBlokland/enum-generator-unity/tree/master/.lib) directory to your project.
 
