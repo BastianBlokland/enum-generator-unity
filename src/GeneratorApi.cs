@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using Microsoft.Extensions.Logging;
 
+using EnumGenerator.Core;
 using EnumGenerator.Core.Utilities;
 using EnumGenerator.Core.Exporter;
 using EnumGenerator.Core.Mapping;
