@@ -1,5 +1,6 @@
 ﻿using System;
-using Microsoft.Extensions.Logging;
+
+using EnumGenerator.Core;
 
 namespace EnumGenerator.Editor
 {
@@ -8,6 +9,16 @@ namespace EnumGenerator.Editor
     /// </summary>
     public sealed class UnityLogger : ILogger
     {
+        private enum Level
+        {
+            Trace,
+            Debug,
+            Information,
+            Warning,
+            Error,
+            Critical
+        }
+
         private readonly bool verbose;
         private readonly UnityEngine.Object context;
 
@@ -17,48 +28,53 @@ namespace EnumGenerator.Editor
             this.context = context;
         }
 
-        public IDisposable BeginScope<T>(T state) => null;
+        public void LogTrace(string message) => this.Log(Level.Trace, message);
 
-        public bool IsEnabled(LogLevel level)
+        public void LogDebug(string message) => this.Log(Level.Debug, message);
+
+        public void LogInformation(string message) => this.Log(Level.Information, message);
+
+        public void LogWarning(string message) => this.Log(Level.Warning, message);
+
+        public void LogError(string message) => this.Log(Level.Error, message);
+
+        public void LogCritical(string message) => this.Log(Level.Critical, message);
+
+        private void Log(Level level, string message)
         {
+            if (!IsEnabled(level))
+                return;
+
+            var formattedMessage = $"[EnumGenerator] {level.ToString()}: {message}";
             switch (level)
             {
-                case LogLevel.Trace:
-                case LogLevel.Debug: return this.verbose;
-                case LogLevel.Information:
-                case LogLevel.Warning:
-                case LogLevel.Error:
-                case LogLevel.Critical: return true;
+                case Level.Trace:
+                case Level.Debug:
+                case Level.Information:
+                    UnityEngine.Debug.Log(formattedMessage, context);
+                    break;
+                case Level.Warning:
+                    UnityEngine.Debug.LogWarning(formattedMessage, context);
+                    break;
+                case Level.Error:
+                case Level.Critical:
+                    UnityEngine.Debug.LogError(formattedMessage, context);
+                    break;
                 default:
                     throw new ArgumentException($"Unknown level: '{level}'", nameof(level));
             }
         }
 
-        public void Log<T>(
-            LogLevel level,
-            EventId id,
-            T state,
-            Exception exception,
-            Func<T, Exception, string> formatter)
+        private bool IsEnabled(Level level)
         {
-            if (!IsEnabled(level))
-                return;
-
-            var message = $"[EnumGenerator] {formatter(state, exception)}";
             switch (level)
             {
-                case LogLevel.Trace:
-                case LogLevel.Debug:
-                case LogLevel.Information:
-                    UnityEngine.Debug.Log(message, context);
-                    break;
-                case LogLevel.Warning:
-                    UnityEngine.Debug.LogWarning(message, context);
-                    break;
-                case LogLevel.Error:
-                case LogLevel.Critical:
-                    UnityEngine.Debug.LogError(message, context);
-                    break;
+                case Level.Trace:
+                case Level.Debug: return this.verbose;
+                case Level.Information:
+                case Level.Warning:
+                case Level.Error:
+                case Level.Critical: return true;
                 default:
                     throw new ArgumentException($"Unknown level: '{level}'", nameof(level));
             }
