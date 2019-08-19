@@ -23,7 +23,7 @@ rm -rf "$LIBRARY_DIR"
 ensureDir "$LIBRARY_DIR"
 
 info "Fetching nuget packages"
-withRetry nuget install "$NUGET_PACKAGE" -OutputDirectory "$NUGET_DIR" -NoCache
+withRetry nuget install "$NUGET_PACKAGE" -OutputDirectory "$NUGET_DIR" -NoCache -Verbosity detailed
 
 saveDll ()
 {
