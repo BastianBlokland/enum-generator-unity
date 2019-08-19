@@ -1,4 +1,4 @@
-EnumGenerator.Core.4.0.1221
+EnumGenerator.Core.4.1.1229
 Mono.Cecil.0.10.4
 Newtonsoft.Json.12.0.1
 System.Collections.Immutable.1.5.0
