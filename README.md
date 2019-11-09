@@ -11,7 +11,7 @@ having to hard code values, this tool allows you to generate that enum.
 
     ```
     "dependencies": {
-        "com.bastianblokland.enumgenerator": "https://github.com/BastianBlokland/enum-generator-unity.git#v1.6",
+        "com.bastianblokland.enumgenerator": "https://github.com/BastianBlokland/enum-generator-unity.git#v1.6.1",
         ...
     }
     ```
